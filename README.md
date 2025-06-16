@@ -35,35 +35,47 @@ El **dashboard interactivo** permite interpretar visualmente información relaci
   - Columna 'day', para mostrar el numero de día (1-31)
   - Columna 'week_day', para mostrar los días de la semana (lunes a domingo)
 
-### 2. EDA y dashboard
-Mediante los distintos filtros que se aplican en el **dashboard dinamico** se pueden obtener diferentes insights tanto a nivel numerico como visual mediante las gráficas:
+### 2. Análisis descriptivo
+- **Distribución por días**: Se registran más picos de llamada en los días de mitad de semana (martes y miercoles)
+- **Motivos de contacto**: El principal motivo de contacto fue *Billing Question*.
+- **Canal de contacto**: El canal más utilizado fue **Call-Center** (teléfono), seguido por **Chatbot**.
+- **Tiempo de respuesta**: Aproximadamente el 85% de las llamadas están dentro de los estandares de la empresa (Within SLA o Below SLA)
+- **Duración media de las llamadas**: Apróximadamente unos 25 minutos
+- **Sentimiento del cliente**:
+  - Negativo o muy negativo: ~30%
+  - Neutro: ~25%
+  - Muy positivo: ~25%
+  - Positivo: ~20%
+- **Distribución geográfica**: Predominan llamadas de California, Florida y Texas, mientras que apenas hay de Wyioming y Vermont
 
-- Recuento de llamadas, que con los distintos gráficos y filtros se pueden especificar
-- Duración promedio de la llamada
-- Llamadas por estado y ciudad
-- Motivos de llamada
-- Llamadas diarias
-- Forma de contacto (dentro de llamadas se incluye cualquier contacto con los call center)
-- Tiempo de respuesta (para ver si se cumplen los estandares de la empresa)
-- Motivo de la llamada
+### 3. Dashboard (Visualización e Interactividad)
 
-Los **gráficos** tienen formato dinamico gracias a las **listas da validación**, que actuan como filtros.
+- Se utilizaron **tablas dinámicas** y **gráficos** en Google Sheets
+- Se añadieron **listas de validación como filtros** para permitir segmentación dinámica
+- Gráficos principales:
+  - Total de llamadas 
+  - Duración media de llamada
+  - Contactos por día
+  - Recuento por estado
+  - Tipo de canal y motivo de contacto
+  - Sentimiento del cliente
 
-## 📌 Conclusiones
+## 📌 Informe Explicativo del analisis
 
-- La media de contactos se mantiene a lo largo del mes entre 1000 y 1250, con la excepción del último día del mes
-- El motivo más comun de los contactos es sobre facturación (Billing question)
-- Los estados de California y Texas son los que más han contactado, frente a Wyioming y Vermont que son los que menos
-- La mayoría de llamadas se han contestado dentro del plazo establecido por la empresa (Within SLA o Bellow SLA).
-- El medio más popular de contacto ha sido teléfono (call center).
+- Las consultas sobre facturación (Billing Question) son las más comunes
+- El telefono (call-center) sigue siendo el medio más utilizado para contactar, seguido pro el ChatBot, mostrando una oportunidad de automatizacion
+- La satifacción de los clientes es un gran area de mejora (mayoria de clientes son detractores de la empresa, es decir no tienen sentimientos positivos).
+- La duración de los contactos y su relacion con la satisfacción, puede sugerir que las los más  largos tienen que ver con clientes insatisfechos o con problemas que no se resuelven de manera ágil
+- El tiempo de respuesta cumple en su mayoria con los estandares establecidos, lo cual es un punto positivo, aún así los que se contestan fuera de tiempo deberían investigarse
   
 ---
 
 ## 📁 Estructura del Repositorio
+
 ```
 │
 ├── 📄 Call Center.csv ← Dataset original (Ver enlace más arriba en este documento)
 │
-├── 📄 Enlace-GoogleSheets.txt← Contiene el enlace a la hoja compartida
+├── 📄 Enlace-GoogleSheets.txt ← Enlace al documento compartido
 │
 └── README.md                   # Este archivo
