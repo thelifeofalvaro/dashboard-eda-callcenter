@@ -1,81 +1,145 @@
-# dashboard-eda-callcenter
-Resumen: 
-El objetivo de este proyecto es aplicar técnicas de análisis exploratorio de datos y visualización mediante un dashboard que analice diferentes métricas relacionadas con un conjunto de datos de llamadas telefónicas de un call center
+# 📊 Dashboard & Análisis de Datos — Call Center
 
-# 📊 Proyecto: Dashboard & Análisis de Datos 📊
+Análisis exploratorio y dashboard de datos de un call center para identificar patrones de contacto, tiempos de respuesta, motivos y sentimiento del cliente.
 
-**Nombre del archivo**: [Archivo en Google Sheets - Dashboard de Llamadas](https://docs.google.com/spreadsheets/d/1U2brCrCBTTKFwIvwh61Fc8zxVYA7TPijY60nUG2-VL8/edit?usp=sharing)
+## 🎯 Objetivo
 
----
+El objetivo de este proyecto es aplicar técnicas de **análisis exploratorio de datos (EDA)** y visualización para analizar diferentes métricas relacionadas con los contactos de un servicio de atención al cliente.
 
-## 🧠 Objetivo del Proyecto
+El dashboard permite explorar aspectos como:
 
-El objetivo de este proyecto es aplicar un EDA y la visualización mediante un dashboard con el que poder analizar métricas clave relacionadas con un conjunto de datos de contactos de una empresa de call center.
+- Volumen de llamadas y distribución temporal.
+- Duración media de los contactos.
+- Motivos de contacto.
+- Canales utilizados por los clientes.
+- Tiempo de respuesta y cumplimiento del SLA.
+- Distribución geográfica de los contactos.
+- Sentimiento del cliente.
 
-El **dashboard interactivo** permite interpretar visualmente información relacionada con distintas métricas (cantidad de contactos, duración media, contactos por día, motivo del contacto, ubicación, tanto del cliente (estado y ciudad), como de los diferentes call centers, tiempo de respuesta, etc...)
+## 📊 Dashboard
 
----
+El análisis y el dashboard fueron desarrollados utilizando **Google Sheets**, mediante tablas dinámicas, gráficos y filtros interactivos.
 
-## 📂 Fuentes de Datos
+**[Ver Dashboard de Llamadas en Google Sheets](https://docs.google.com/spreadsheets/d/1U2brCrCBTTKFwIvwh61Fc8zxVYA7TPijY60nUG2-VL8/edit?usp=sharing)**
 
-- **Origen**: [Real World Fake Data - Kaggle](https://www.kaggle.com/datasets/mesumraza/real-world-fake-dataset-for-practice?resource=download )
-- **Formato**: Google Sheets
-- **Número de registros**: +2000
-- **Número de columnas**: 12
+El dashboard permite segmentar la información y analizar diferentes métricas de forma dinámica.
 
----
+## 📂 Datos
 
-## 🛠️ Proceso realizado
+Los datos proceden del dataset **Real World Fake Data**, disponible en Kaggle.
 
-### 1. Limpieza y transformación de datos
-- Creamos una copia del archivo original en otra hoja, para no perturbar los datos originales. A partir de aquí se hace referencia al trabajo realizado en dicha copia.
-- Limpiamos registros que carecen de datos (hay 6 lineas que no tienen datos, unicamente el Id de llamada)
-- Eliminamos la columna 'csat_score', satisfacción del cliente, ya que al hacer recuento de los que son válidos y los que no, (12268 con valor, frente a 20667 vacios), puede dar lugar a una gran distorsión, además existe una columna que hace una función similar - 'sentiment' (Opinión del cliente).
-- A partir de la columna 'call_timestamp', como solo tenemos datos recogidos en Octubre de 2020, creamos:
-  - Columna 'day', para mostrar el numero de día (1-31)
-  - Columna 'week_day', para mostrar los días de la semana (lunes a domingo)
+- **Fuente:** [Real World Fake Data - Kaggle](https://www.kaggle.com/datasets/mesumraza/real-world-fake-dataset-for-practice?resource=download)
+- **Formato de trabajo:** Google Sheets
+- **Registros:** +2.000
+- **Columnas originales:** 12
+- **Periodo analizado:** octubre de 2020
 
-### 2. Análisis descriptivo
-- **Distribución por días**: Se registran más picos de llamada en los días de mitad de semana (martes y miercoles)
-- **Motivos de contacto**: El principal motivo de contacto fue *Billing Question*.
-- **Canal de contacto**: El canal más utilizado fue **Call-Center** (teléfono), seguido por **Chatbot**.
-- **Tiempo de respuesta**: Aproximadamente el 85% de las llamadas están dentro de los estandares de la empresa (Within SLA o Below SLA)
-- **Duración media de las llamadas**: Apróximadamente unos 25 minutos
-- **Sentimiento del cliente**:
-  - Negativo o muy negativo: ~30%
-  - Neutro: ~25%
-  - Muy positivo: ~25%
-  - Positivo: ~20%
-- **Distribución geográfica**: Predominan llamadas de California, Florida y Texas, mientras que apenas hay de Wyioming y Vermont
+## 🔄 Proceso de análisis
 
-### 3. Dashboard (Visualización e Interactividad)
+El proyecto se desarrolló en varias etapas.
 
-- Se utilizaron **tablas dinámicas** y **gráficos** en Google Sheets
-- Se añadieron **listas de validación como filtros** para permitir segmentación dinámica
-- Gráficos principales:
-  - Total de llamadas 
-  - Duración media de llamada
-  - Contactos por día
-  - Recuento por estado
-  - Tipo de canal y motivo de contacto
-  - Sentimiento del cliente
+### 1. Limpieza y transformación
 
-## 📌 Informe Explicativo del analisis
+Se realizó una copia de los datos originales para trabajar sobre ella sin modificar la fuente inicial.
 
-- Las consultas sobre facturación (Billing Question) son las más comunes
-- El telefono (call-center) sigue siendo el medio más utilizado para contactar, seguido pro el ChatBot, mostrando una oportunidad de automatizacion
-- La satifacción de los clientes es un gran area de mejora (mayoria de clientes son detractores de la empresa, es decir no tienen sentimientos positivos).
-- La duración de los contactos y su relacion con la satisfacción, puede sugerir que las los más  largos tienen que ver con clientes insatisfechos o con problemas que no se resuelven de manera ágil
-- El tiempo de respuesta cumple en su mayoria con los estandares establecidos, lo cual es un punto positivo, aún así los que se contestan fuera de tiempo deberían investigarse
-  
----
+Durante esta fase:
 
-## 📁 Estructura del Repositorio
+- Se eliminaron 6 registros que únicamente contenían el identificador de llamada y no aportaban información adicional.
+- Se eliminó la columna `csat_score` debido al elevado número de valores vacíos. Además, el dataset dispone de la variable `sentiment`, que permite analizar la percepción del cliente desde otra perspectiva.
+- A partir de `call_timestamp` se crearon nuevas variables para facilitar el análisis temporal:
+  - `day`: día del mes.
+  - `week_day`: día de la semana.
 
-```
-│
-├── 📄 Call Center.csv ← Dataset original (Ver enlace más arriba en este documento)
-│
-├── 📄 Enlace-GoogleSheets.txt ← Enlace al documento compartido
-│
-└── README.md                   # Este archivo
+### 2. Análisis exploratorio
+
+A partir de los datos preparados se analizaron diferentes dimensiones del servicio.
+
+#### Distribución temporal
+
+Se observan mayores volúmenes de llamadas durante determinados días de la semana, destacando especialmente martes y miércoles.
+
+#### Motivos de contacto
+
+El motivo de contacto más frecuente es **Billing Question**, relacionado con consultas de facturación.
+
+#### Canal de contacto
+
+El **Call Center** es el canal más utilizado, seguido del **Chatbot**.
+
+Este comportamiento permite identificar el peso que continúa teniendo la atención telefónica y, al mismo tiempo, el papel de los canales automatizados.
+
+#### Tiempo de respuesta
+
+Aproximadamente el **85 % de las llamadas** se encuentran dentro de los estándares establecidos por la empresa, clasificadas como `Within SLA` o `Below SLA`.
+
+Los contactos que quedan fuera de estos estándares representan un punto de interés para un análisis posterior.
+
+#### Duración de las llamadas
+
+La duración media de los contactos se sitúa aproximadamente en **25 minutos**.
+
+#### Sentimiento del cliente
+
+La distribución observada es aproximadamente:
+
+- Negativo o muy negativo: ~30 %
+- Neutro: ~25 %
+- Muy positivo: ~25 %
+- Positivo: ~20 %
+
+El sentimiento del cliente constituye uno de los principales puntos de interés del análisis.
+
+#### Distribución geográfica
+
+Los estados con mayor volumen de contactos son **California, Florida y Texas**, mientras que estados como **Wyoming y Vermont** presentan una representación mucho menor.
+
+## 📈 Principales conclusiones
+
+El análisis permite identificar varios patrones relevantes:
+
+- Las consultas relacionadas con **facturación** son el principal motivo de contacto.
+- El **teléfono** continúa siendo el canal más utilizado, seguido del **Chatbot**, lo que muestra la importancia de analizar la evolución y posible automatización de determinados tipos de consultas.
+- La distribución del **sentimiento del cliente** muestra un margen importante de mejora en la experiencia de atención.
+- La **duración de los contactos** puede ser una variable interesante para estudiar junto con el sentimiento y el motivo de contacto, aunque este proyecto no establece una relación causal entre estas variables.
+- Aunque la mayoría de los contactos cumplen los estándares de tiempo de respuesta, los casos fuera de SLA representan una oportunidad para profundizar en las causas y detectar posibles problemas operativos.
+
+## 🛠️ Herramientas utilizadas
+
+- Google Sheets
+- Tablas dinámicas
+- Gráficos
+- Filtros y listas de validación
+- Análisis exploratorio de datos (EDA)
+
+## 📊 Métricas y visualizaciones
+
+El dashboard incluye diferentes elementos para facilitar la exploración de los datos:
+
+- Total de llamadas.
+- Duración media de las llamadas.
+- Contactos por día.
+- Distribución por estado.
+- Canal de contacto.
+- Motivo de contacto.
+- Sentimiento del cliente.
+- Tiempo de respuesta y cumplimiento del SLA.
+
+## 📁 Estructura del repositorio
+
+    ├── 📄 Call Center.csv
+    ├── 📄 Enlace-GoogleSheets.txt
+    └── 📄 README.md
+
+### `Call Center.csv`
+
+Dataset original utilizado como fuente para el análisis.
+
+### `Enlace-GoogleSheets.txt`
+
+Archivo que contiene el enlace al documento de Google Sheets donde se encuentra el análisis y dashboard.
+
+## ℹ️ Contexto del proyecto
+
+Proyecto realizado como ejercicio práctico de **análisis exploratorio de datos y visualización**, centrado en la interpretación de información operativa y de experiencia del cliente.
+
+El objetivo no es únicamente representar los datos, sino utilizarlos para identificar patrones y posibles áreas de mejora dentro del servicio de atención.
